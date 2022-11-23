@@ -1,5 +1,7 @@
 {
-
-  "java.configuration.updateBuildConfiguration": "disabled"
+  "java.configuration.updateBuildConfiguration": "disabled",
+  "cSpell.words": [
+    "socialnet",
+    "typedefs"
+  ]
 }
-
