@@ -60,7 +60,7 @@ class Authenticator {
     }
     final googleAuth = await signInAccount.authentication;
     final oauthCredentials = GoogleAuthProvider.credential(
-      accessToken: googleAuth.idToken,
+      accessToken: googleAuth.accessToken,
       idToken: googleAuth.idToken,
     );
     try {
