@@ -49,14 +49,14 @@ class HomePage extends StatelessWidget {
           children: [
             TextButton(
               onPressed: () async {
-                final result = await Authenticator().logInWithGoogle();
+                final result = await const Authenticator().logInWithGoogle();
                 result.log();
               },
               child: const Text("Sign In With Google"),
             ),
             TextButton(
               onPressed: () async {
-                final result = await Authenticator().loginWitFacebook();
+                final result = await const Authenticator().loginWitFacebook();
                 result.log();
               },
               child: const Text("Sign In With Facebook"),

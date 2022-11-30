@@ -4,9 +4,10 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:socialnet/state/auth/models/auth_results.dart';
 import 'package:socialnet/state/post/typedefs/user_id.dart';
 
-import '../constants/constants.dart';
+import '../../constants/constants.dart';
 
 class Authenticator {
+  const Authenticator();
   UserId? get userId => FirebaseAuth.instance.currentUser?.uid;
   bool get isAlreadyLoggedIn => userId != null;
   String get displayName =>
