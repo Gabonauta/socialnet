@@ -29,13 +29,15 @@ class AuthStateNotifier extends StateNotifier<AuthState> {
     final result = await _authenticator.logInWithGoogle();
     final userId = _authenticator.userId;
     if (result == AuthResult.success && userId != null) {
-      await saveUserInfo(userId: userId);
-      state = AuthState(
-        result: result,
-        isLoading: false,
+      await saveUserInfo(
         userId: userId,
       );
     }
+    state = AuthState(
+      result: result,
+      isLoading: false,
+      userId: userId,
+    );
   }
 
   Future<void> loginWithFacebook() async {
@@ -43,13 +45,15 @@ class AuthStateNotifier extends StateNotifier<AuthState> {
     final result = await _authenticator.loginWitFacebook();
     final userId = _authenticator.userId;
     if (result == AuthResult.success && userId != null) {
-      await saveUserInfo(userId: userId);
-      state = AuthState(
-        result: result,
-        isLoading: false,
+      await saveUserInfo(
         userId: userId,
       );
     }
+    state = AuthState(
+      result: result,
+      isLoading: false,
+      userId: userId,
+    );
   }
 
   Future<void> saveUserInfo({required UserId userId}) {
