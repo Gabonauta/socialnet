@@ -3,13 +3,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:socialnet/state/auth/provider/auth_state_provider.dart';
 import 'package:socialnet/state/auth/provider/is_logged_in_provider.dart';
+import 'package:socialnet/state/providers/is_loading_provider.dart';
+import 'package:socialnet/views/components/loading/loading_screen.dart';
 import 'firebase_options.dart';
-
-import 'dart:developer' as devtools show log;
-
-extension Log on Object {
-  void log() => devtools.log(toString());
-}
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -37,6 +33,16 @@ class MyApp extends StatelessWidget {
       title: 'Material App',
       home: Consumer(
         builder: (context, ref, child) {
+          //take care of displaying the loading screen
+          ref.listen(isLoadingProvider, (_, isLoading) {
+            if (isLoading) {
+              LoadingScreen.instance().show(
+                context: context,
+              );
+            } else {
+              LoadingScreen.instance().hide();
+            }
+          });
           final isLoggedIn = ref.watch(isLoggedInProvider);
           if (isLoggedIn) {
             return const MainView();
